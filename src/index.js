@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './PlayerSeasonStats';
 import CareerStats from './CareerStats';
 import reportWebVitals from './reportWebVitals';
 import PlayerPlayoffStats from "./PlayerPlayoffStats";
@@ -9,10 +8,12 @@ import TeamSeasonStats from "./TeamSeasonStats";
 import TeamPlayoffStats from "./TeamPlayoffStats";
 import PlayerSeasonStats from "./PlayerSeasonStats";
 import PlayerSeasonAverageStats from "./PlayerSeasonAverage";
+import LandingPage from "./LandingPage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+      <LandingPage />
     <PlayerSeasonStats />
     <PlayerSeasonAverageStats />
       <CareerStats />
