@@ -11,6 +11,7 @@ import TableRow from '@mui/material/TableRow';
 const useStyles = makeStyles({
     table: {
         minWidth: 650,
+        backgroundColor: '#FAFDF3'
     },
     customHeader: {
         color: '#ffffff', // Change this to your desired color
@@ -74,9 +75,19 @@ function TeamSeasonStats() {
     }
 
     return (
+        <div
+            style={{
+                display: 'flex',
+                justifyContent: 'center', // Horizontally centers the table
+                alignItems: 'center',    // Vertically centers the table
+                // Ensures the table takes up the full viewport height
+                backgroundColor: '#f0f0f0', // Optional: background color for visibility
+                marginBottom: '20px'
+            }}
+        >
 
-        <TableContainer component={Paper}>
-            <h1>Team Season Stats - {data.teamName} | {data.season}</h1>
+        <TableContainer component={Paper} style={{ width: '75%', backgroundColor: '#FAFDF3' }}>
+            <h1 style={{ textAlign: 'center', marginTop: 0 }} >Team Season Stats - {data.teamName} | {data.season}</h1>
             <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                     <TableRow>
@@ -106,6 +117,7 @@ function TeamSeasonStats() {
                 </TableBody>
             </Table>
         </TableContainer>
+            </div>
     );
 }
 

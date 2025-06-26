@@ -9,21 +9,39 @@ import TeamPlayoffStats from "./TeamPlayoffStats";
 import PlayerSeasonStats from "./PlayerSeasonStats";
 import PlayerSeasonAverageStats from "./PlayerSeasonAverage";
 import LandingPage from "./LandingPage";
+import { PlayerProvider, usePlayer } from "./PlayerContext";
+import {TeamProvider} from "./TeamContext";
+import ImageComponent from "./RegularSeasonShotChart";
+import ImageComponentHex from "./RegularSeasonHexShotChart";
+import RegularSeasonHeatMap from "./RegularSeasonHeatMap";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const PlayerSeasonStatsWithPlayer = () => {
+    const { selectedPlayer } = usePlayer();
+    return <PlayerSeasonStats playerName={selectedPlayer} />;
+};
+
 root.render(
-  <React.StrictMode>
-      <LandingPage />
-    <PlayerSeasonStats />
-    <PlayerSeasonAverageStats />
-      <CareerStats />
-      <PlayerPlayoffStats />
-      <TeamSeasonStats />
-      <TeamPlayoffStats />
-  </React.StrictMode>
+    <React.StrictMode>
+        <PlayerProvider>
+            <LandingPage />
+            <PlayerSeasonStatsWithPlayer />
+            <PlayerSeasonAverageStats />
+            <CareerStats />
+            <PlayerPlayoffStats />
+            <ImageComponent />
+            <ImageComponentHex />
+            <RegularSeasonHeatMap />
+        </PlayerProvider>
+
+        <TeamProvider>
+            <TeamPlayoffStats />
+        </TeamProvider>
+        <TeamSeasonStats />
+
+
+    </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
