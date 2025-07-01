@@ -29,7 +29,7 @@ function CareerStats() {
 
     useEffect(() => {
         if (selectedPlayer) {
-            fetch('http://127.0.0.1:5000/api/nba/player/careerStats', {
+            fetch('http://127.0.0.1:5000/api/nba/player/careerSeasonTotal', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -47,25 +47,26 @@ function CareerStats() {
                     const parsedData = JSON.parse(text);
                     console.log("Parsed data:", parsedData);
 
-                    const keys = Object.keys(parsedData);
-                    const rowCount = Object.keys(parsedData[keys[0]]).length;
-                    const formattedRows = [];
+                    if (Array.isArray(parsedData)) {
+                        setRows(parsedData); // This is the clean array of rows already
+                    } else {
+                        // fallback in case it's an object with keys
+                        const keys = Object.keys(parsedData);
+                        const rowCount = Object.keys(parsedData[keys[0]]).length;
+                        const formattedRows = [];
 
-                    for (let i = 0; i < rowCount; i++) {
-                        const row = {};
-                        keys.forEach(key => {
-                            row[key] = parsedData[key][i];
-                        });
-                        formattedRows.push(row);
+                        for (let i = 0; i < rowCount; i++) {
+                            const row = {};
+                            keys.forEach(key => {
+                                row[key] = parsedData[key][i];
+                            });
+                            formattedRows.push(row);
+                        }
+
+                        setRows(formattedRows);
                     }
-
-                    console.log("Formatted rows:", formattedRows);
-                    setRows(formattedRows);
                 })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                    setError(error);
-                });
+
         }
     }, [selectedPlayer]);
 

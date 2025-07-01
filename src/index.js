@@ -26,19 +26,19 @@ root.render(
     <React.StrictMode>
         <PlayerProvider>
             <LandingPage />
-            <PlayerSeasonStatsWithPlayer />
+            {/*<PlayerSeasonStatsWithPlayer />*/}
             <PlayerSeasonAverageStats />
             <CareerStats />
             <PlayerPlayoffStats />
-            <ImageComponent />
-            <ImageComponentHex />
-            <RegularSeasonHeatMap />
+            {/*<ImageComponent />*/}
+            {/*<ImageComponentHex />*/}
+            {/*<RegularSeasonHeatMap />*/}
         </PlayerProvider>
 
-        <TeamProvider>
-            <TeamPlayoffStats />
-        </TeamProvider>
-        <TeamSeasonStats />
+        {/*<TeamProvider>*/}
+        {/*    <TeamPlayoffStats />*/}
+        {/*</TeamProvider>*/}
+        {/*<TeamSeasonStats />*/}
 
 
     </React.StrictMode>
